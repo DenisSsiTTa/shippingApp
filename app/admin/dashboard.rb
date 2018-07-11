@@ -2,7 +2,7 @@ ActiveAdmin.register_page "Dashboard" do
 
   #Charts
 
-  @categories = Category.includes(:publications).group(:name).pluck("categories.name, count('publications')")
+  @categories = [] #Category.includes(:publications).group(:name).pluck("categories.name, count('publications')")
   @publications_by_day = Publication.group_by_day(:created_at).count
 
 
