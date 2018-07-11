@@ -1,0 +1,132 @@
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 text-center title-up">
+        <% if user_signed_in? %>
+          <%= link_to "Publica Ahora!", new_publication_path, class: 'btn btn-info btn-xl btn-new bold' %>
+        <% end %>
+        <h2>Avisos de Envios</h2>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-md-3">
+         <div class="form-index">
+           <%= form_tag(publications_path, method: :get, class:"form") do %>
+           <div class="well">
+             <h3 class="text-center title-up">Buscador</h3>
+             <div class="form-group">
+               <%= label :type, "Tipo de Envio" %>
+               <%= select_tag :search_type, options_from_collection_for_select(@types, :id, :name), prompt: "Escoge un tipo de envio", class: 'form-control form-control-input' %>
+             </div>
+
+
+             <div class="form-group">
+               <%= label :region, "Región" %>
+               <%= select_tag :search_region, options_from_collection_for_select(@regions, :id, :name), prompt: "Selecciona una Región", class: 'form-control' %>
+             </div>
+             <div class="form-group">
+               <%= label :commune, "Comuna" %>
+               <%= select_tag :search_commune, options_from_collection_for_select(@communes, :id, :name), prompt: "Selecciona la Comuna", class: 'form-control' %>
+             </div>
+
+
+
+             <div class="form-group">
+               <%= label :width, "Ancho" %>
+               <div class="row">
+                 <div class="col-md-12">
+                   <div class="input-group">
+                     <div class="input-group-addon">
+                       <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                     </div>
+                     <%= select_tag :width_min, options_for_select([['30 cms', '1'],['50 cms', '2'],['80 cms', '3'],['90 cms', '4'],['otro', '5']]),class: 'form-control', include_blank: true %>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="form-group">
+               <%= label :length, "Largo" %>
+               <div class="row">
+                 <div class="col-md-12">
+                   <div class="input-group">
+                     <div class="input-group-addon">
+                       <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                     </div>
+                     <%= select_tag :length_min, options_for_select([['30 cms', '1'],['50 cms', '2'],['80 cms', '3'],['90 cms', '4'],['otro', '5']]),class: 'form-control', include_blank: true %>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="form-group">
+               <%= label :height, "Alto" %>
+               <div class="row">
+                 <div class="col-md-12">
+                   <div class="input-group">
+                     <div class="input-group-addon">
+                       <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                     </div>
+                     <%= select_tag :height_min, options_for_select([['30 cms', '1'],['50 cms', '2'],['80 cms', '3'],['90 cms', '4'],['otro', '5']]),class: 'form-control', include_blank: true %>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <br>
+             <div class="form-group">
+               <div class="row">
+                 <div class="col-md-6">
+                   <span class="input-group-btn">
+                     <%= link_to publications_path, class: "btn btn-warning btn-sm btn-block" do %>
+                     <span class="glyphicon glyphicon-filter"></span> Limpiar
+                     <% end %>
+                   </span>
+                 </div>
+                 <div class="col-md-6">
+                   <span class="input-group-btn">
+                     <%= button_tag(type: "submit", class: "btn btn-primary btn-sm btn-block") do %>
+                     <span class="glyphicon glyphicon-search"></span> Buscar
+                     <% end %>
+                   </span>
+                 </div>
+               </div>
+               <br>
+            </div>
+          </div>
+          <% end %>
+        </div>
+        </div>
+
+        <div class="col-md-9">
+          <div class="row">
+           <% @publications.each do |publication| %>
+           <div class="col-md-4">
+            <div class="thumbnail display-index">
+              <%= link_to (image_tag(publication.publication_attachments.first.photo.thumb, class: 'img-responsive')), publication unless publication.publication_attachments.empty? %>
+              <div class="caption text-center">
+                <h4><%= publication.title %></h4>
+                <hr class= "separator">
+                <div class="show-index-publications">
+                  <%= image_tag 'ubication.png', class: 'img-ico-index' %>
+                  <%= publication.region.name if publication.region_id %>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="show-index-publications">
+                      <%= image_tag 'location.png', class: 'img-ico-index' %>
+                      <%= publication.commune.name %>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="show-index-publications">
+                      <%= image_tag 'dollar.png', class: 'img-ico-index-dollar' %>
+                      <strong><%= publication.price unless publication.price.nil? %></strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

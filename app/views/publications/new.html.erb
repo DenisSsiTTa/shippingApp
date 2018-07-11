@@ -1,0 +1,14 @@
+
+  <div class="container">
+    <section class="new-shipping">
+      <%= link_to 'Volver a Avisos', publications_path %>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h2>Nuevo Aviso</h2>
+            <br>
+          </div>
+        </div>
+        <!-- Formulario de New Shipping -->
+        <%= render 'form', publication: @publication %>
+    </section>
+  </div>
