@@ -2,8 +2,6 @@ ActiveAdmin.register_page "Dashboard" do
 
   #Charts
 
-  @categories = [] #Category.includes(:publications).group(:name).pluck("categories.name, count('publications')")
-  @publications_by_day = []#Publication.group_by_day(:created_at).count
 
 
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
