@@ -1,4 +1,4 @@
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       <div class="col-md-12 text-center title-up">
         <% if user_signed_in? %>
@@ -18,7 +18,6 @@
                <%= select_tag :search_type, options_from_collection_for_select(@types, :id, :name), prompt: "Escoge un tipo de envio", class: 'form-control form-control-input' %>
              </div>
 
-
              <div class="form-group">
                <%= label :region, "Región" %>
                <%= select_tag :search_region, options_from_collection_for_select(@regions, :id, :name), prompt: "Selecciona una Región", class: 'form-control' %>
@@ -27,8 +26,6 @@
                <%= label :commune, "Comuna" %>
                <%= select_tag :search_commune, options_from_collection_for_select(@communes, :id, :name), prompt: "Selecciona la Comuna", class: 'form-control' %>
              </div>
-
-
 
              <div class="form-group">
                <%= label :width, "Ancho" %>

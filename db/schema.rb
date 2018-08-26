@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180711010009) do
+ActiveRecord::Schema.define(version: 20180818235609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,8 +92,6 @@ ActiveRecord::Schema.define(version: 20180711010009) do
     t.integer "page_views", default: 0
     t.string "address"
     t.integer "weight"
-    t.integer "commune2"
-    t.integer "region2"
     t.string "address2"
     t.bigint "commune2_id"
     t.bigint "region2_id"
@@ -145,6 +143,8 @@ ActiveRecord::Schema.define(version: 20180711010009) do
     t.integer "role", default: 1
     t.string "avatar"
     t.integer "rate", default: 5
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

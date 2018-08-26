@@ -25,7 +25,7 @@ AdminUser.create!(email: 'admin@goshipping.com', password: 'password', password_
 
 # User Devise
 User.create!(name: 'Super Admin', email: 'admin@gmail.com', phone: 977681699, password: '123123', password_confirmation: '123123', role: "admin")
-User.create!(name: 'Denisse', email: 'denissev@gmail.com', phone: 977681691, password: '123123', password_confirmation: '123123')
+User.create!(name: 'Denisse', email: 'denisse@gmail.com', phone: 977681691, password: '123123', password_confirmation: '123123')
 User.create!(name: 'Sandra', email: 'sandra@gmail.com', phone: 977681692, password: '123123', password_confirmation: '123123', role: "guest")
 User.create!(name: 'marcelo', email: 'marcelo@gmail.com', phone: 977681693, password: '123123', password_confirmation: '123123', role: "guest")
 User.create!(name: 'Javiera', email: 'javiera@gmail.com', phone: 977681694, password: '123123', password_confirmation: '123123')

@@ -11,8 +11,12 @@ class PublicationsController < ApplicationController
     @publications = Publication.all.includes(:region, :commune, :publication_attachments) #Bulllet
     @publications = @publications.by_title(params[:search_title]) if params[:search_title].present?
     @publications = @publications.by_type(params[:search_type]) if params[:search_type].present?
+    @publications = @publications.by_address(params[:search_address]) if params[:search_address].present?
     @publications = @publications.by_region(params[:search_region]) if params[:search_region].present?
     @publications = @publications.by_commune(params[:search_commune]) if params[:search_commune].present?
+    @publications = @publications.by_address2(params[:search_address2]) if params[:search_address2].present?
+    @publications = @publications.by_region2(params[:search_region2]) if params[:search_region2].present?
+    @publications = @publications.by_commune2(params[:search_commune2]) if params[:search_commune2].present?
     @publications = @publications.by_width_min(params[:width_min]) if params[:width_min].present?
     @publications = @publications.by_width_max(params[:width_max]) if params[:width_max].present?
     @publications = @publications.by_length_min(params[:length_min]) if params[:length_min].present?
@@ -60,9 +64,6 @@ class PublicationsController < ApplicationController
   # POST /publications.json
   def create
     @publication = current_user.publications.new(publication_params)
-    equipments_ids = publication_params[:equipments_ids].delete_if{ |x| x.empty? }
-    @equipments = Equipment.find(equipments_ids)
-    @publication.equipments << @equipments
 
     #@publication.user = current_user if user_signed_in? -> Soluciona el error 'user must exist' al crear una nueva publicacion
     respond_to do |format|
@@ -121,6 +122,6 @@ class PublicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-      params.require(:publication).permit(:user_id, :title, :width, :length, :height, :description, :address, :latitude, :longitude, :price, :category_id, :type_id, :region_id, :commune_id, equipments_ids: [], publication_attachments_attributes: [:id, :publication_id, :photo, :photo_cache])
+      params.require(:publication).permit(:user_id, :title, :width, :length, :height, :description, :address, :address2, :price, :category_id, :type_id, :region_id, :commune_id, :region2_id, :commune2_id, equipments_ids: [], publication_attachments_attributes: [:id, :publication_id, :photo, :photo_cache])
     end
 end

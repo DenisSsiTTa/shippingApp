@@ -34,8 +34,10 @@ gem 'dotenv-rails'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+#4
+gem 'bootstrap-sass', '~> 3.3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '>= 3.2'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -56,13 +58,18 @@ gem 'jbuilder', '~> 2.5'
 gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'omniauth-facebook'
+
+#3
+gem 'jquery-easing-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem "better_errors"
+  gem "binding_of_caller"
   gem 'railroady'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'

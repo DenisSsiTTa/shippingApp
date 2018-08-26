@@ -27,9 +27,10 @@
           <%= label :type, "Tipo de Envio" %>
           <%= f.collection_select :type_id, @types, :id, :name, {prompt: "Escoge un tipo de envio"}, class: 'form-control', required: true %>
         </div>
+
         <div class="form-group">
           <%= label :title, "Título" %>
-          <%= f.text_field :title, class: 'form-control', placeholder: "Ej: Vendo casa en Vitacura", required: true %>
+          <%= f.text_field :title, class: 'form-control', placeholder: "Ej: Envio paquete Santiago-Conce", required: true %>
         <% if publication.errors[:title].any? %>
           <span class="label label-danger">
             <% publication.errors[:title].each do |message| %>
@@ -38,18 +39,51 @@
           </span>
         <% end %>
         </div>
+
+
+        <div class="card">
+          <div class="card-header">
+            Dirección Origen
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+
+              <div class="form-group">
+                <%= label :address, "Dirección Origen" %>
+                <%= f.text_field :address, class: 'form-control', placeholder: "Ej: Alcántara 99", required: true %>
+              </div>
+              <div class="form-group">
+                <%= f.label :region_id, "Región Origen" %>
+                <%= f.collection_select :region_id, @regions, :id, :name, {prompt: "Selecciona una Región de Origen"}, class: 'form-control', required: true %>
+              </div>
+              <div class="form-group" id="communes">
+                <%= f.label :commune_id, "Comuna Origen" %>
+                <%= f.grouped_collection_select :commune_id, Region.order(:name), :communes, :name, :id, :name, {}, class: 'form-control' %>
+              </div>
+
+            </blockquote>
+          </div>
+        </div>
+
+
+
+
+
         <div class="form-group">
-          <%= label :address, "Dirección" %>
-          <%= f.text_field :address, class: 'form-control', placeholder: "Ej: Alcántara 99", required: true %>
+          <%= label :address2, "Dirección Destino" %>
+          <%= f.text_field :address2, class: 'form-control', placeholder: "Ej: Diego de Almagro 1992", required: true %>
         </div>
         <div class="form-group">
-          <%= f.label :region_id, "Región" %>
-          <%= f.collection_select :region_id, @regions, :id, :name, {prompt: "Selecciona una Región"}, class: 'form-control', required: true %>
+          <%= f.label :region2_id, "Región Destino" %>
+          <%= f.collection_select :region2_id, @regions, :id, :name, {prompt: "Selecciona una Región de Destino"}, class: 'form-control', required: true %>
         </div>
-        <div class="form-group" id="communes">
-          <%= f.label :commune_id, "Comuna" %>
-          <%= f.grouped_collection_select :commune_id, Region.order(:name), :communes, :name, :id, :name, {}, class: 'form-control' %>
+        <div class="form-group" id="communes2">
+          <%= f.label :commune2_id, "Comuna Destino" %>
+          <%= f.grouped_collection_select :commune2_id, Region.order(:name), :communes, :name, :id, :name, {}, class: 'form-control' %>
         </div>
+
+
+
         <div class="form-group">
           <%= f.fields_for :publication_attachments do |p| %>
             <%= p.label :photo, "Imágenes" %>
@@ -75,7 +109,7 @@
         </div>
         <div class="form-group" id="precio-pub">
           <%= label :price, "Precio" %>
-          <%= f.number_field :price, class: 'form-control', placeholder: "Ej: 3000 UF", required: true %>
+          <%= f.number_field :price, class: 'form-control', placeholder: "Ej: 35000", required: true %>
         </div>
 
         <script>
@@ -112,6 +146,10 @@
               type: {required: true},
               address: {required: true},
               region: {required: true},
+              commune: {required: true},
+              address2: {required: true},
+              region2: {required: true},
+              commune2: {required: true},
               description: {required: true},
               price: {required: true}
             },
@@ -120,7 +158,11 @@
               category: "Debes seleccionar una categoría",
               type: "Debes seleccionar un tipo de envio",
               address: "Ingresa tu dirección",
-              region: "Selecciona una región",
+              region: "Selecciona una región Origen",
+              commune: "Selecciona una comuna Origen",
+              address2: "Ingresa tu dirección Destino",
+              region2: "Selecciona una región Destino",
+              commune2: "Selecciona una comuna Destino",
               description: "Debes ingresar una descripción",
               price: "Ingres un precio valido"
             }

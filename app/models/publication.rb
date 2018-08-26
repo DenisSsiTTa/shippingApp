@@ -1,9 +1,11 @@
 class Publication < ApplicationRecord
   #mount_uploader :photo, PhotoUploader
-  
+
   belongs_to :user
   belongs_to :commune, optional: true
   belongs_to :region, optional: true
+  belongs_to :commune2, optional: true
+  belongs_to :region2, optional: true
   belongs_to :category, optional: true
   belongs_to :type, optional: true
 
@@ -15,8 +17,8 @@ class Publication < ApplicationRecord
 
   attr_accessor :equipments_ids
 
-  geocoded_by :address  
-  after_validation :geocode  
+  geocoded_by :address
+  after_validation :geocode
 
   # Validations
   validates :title, length: { maximum: 50 }
@@ -29,6 +31,8 @@ class Publication < ApplicationRecord
   scope :by_type, -> (search) { where(type_id: search) }
   scope :by_region, -> (search) { where(region_id: search) }
   scope :by_commune, -> (search) { where(commune_id: search) }
+  scope :by_region2, -> (search) { where(region_id: search) }
+  scope :by_commune2, -> (search) { where(commune_id: search) }
   scope :by_width_min, -> (value_min) { where("width >= ?", value_min) }
   scope :by_width_max, -> (value_max) { where("width <= ?", value_max) }
   scope :by_length_min, -> (value_min) { where("length >= ?", value_min) }

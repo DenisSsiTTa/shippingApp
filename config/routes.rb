@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {
-    registrations: 'users/registrations' # rails g devise:controllers users
+    # registrations: 'users/registrations' # rails g devise:controllers users
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   resources :publications do
