@@ -40,47 +40,56 @@
         <% end %>
         </div>
 
-
-        <div class="card">
-          <div class="card-header">
-            Dirección Origen
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-
-              <div class="form-group">
-                <%= label :address, "Dirección Origen" %>
-                <%= f.text_field :address, class: 'form-control', placeholder: "Ej: Alcántara 99", required: true %>
+        <table>
+        <tr>
+          <td class="col-md-offset-2 col-md-6" align="top">
+            <div class="card">
+              <h5 class="card-header">Dirección Origen</h5>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <div class="form-group">
+                    <%= label :address, "Dirección Origen" %>
+                    <%= f.text_field :address, class: 'form-control', placeholder: "Ej: Alcántara 99", required: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :region_id, "Región Origen" %>
+                    <%= f.collection_select :region_id, @regions, :id, :name, {prompt: "Selecciona una Región de Origen"}, class: 'form-control', required: true %>
+                  </div>
+                  <div class="form-group" id="communes">
+                    <%= f.label :commune_id, "Comuna Origen" %>
+                    <%= f.grouped_collection_select :commune_id, Region.order(:name), :communes, :name, :id, :name, {}, class: 'form-control' %>
+                  </div>
+                </blockquote>
               </div>
-              <div class="form-group">
-                <%= f.label :region_id, "Región Origen" %>
-                <%= f.collection_select :region_id, @regions, :id, :name, {prompt: "Selecciona una Región de Origen"}, class: 'form-control', required: true %>
+            </div>
+          </td>
+
+          <td class="col-md-offset-2 col-md-6" align="top">
+            <div class="card">
+              <h5 class="card-header">Dirección Destino</h5>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <div class="form-group">
+                    <%= label :address2, "Dirección Destino" %>
+                    <%= f.text_field :address2, class: 'form-control', placeholder: "Ej: Diego de Almagro 1992", required: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :region2_id, "Región Destino" %>
+                    <%= f.collection_select :region2_id, @regions, :id, :name, {prompt: "Selecciona una Región de Destino"}, class: 'form-control', required: true %>
+                  </div>
+                  <div class="form-group" id="communes2">
+                    <%= f.label :commune2_id, "Comuna Destino" %>
+                    <%= f.grouped_collection_select :commune2_id, Region.order(:name), :communes, :name, :id, :name, {}, class: 'form-control' %>
+                  </div>
+                </blockquote>
               </div>
-              <div class="form-group" id="communes">
-                <%= f.label :commune_id, "Comuna Origen" %>
-                <%= f.grouped_collection_select :commune_id, Region.order(:name), :communes, :name, :id, :name, {}, class: 'form-control' %>
-              </div>
-
-            </blockquote>
-          </div>
-        </div>
+            </div>
+          </td>
+        </tr>
+        </table>
 
 
 
-
-
-        <div class="form-group">
-          <%= label :address2, "Dirección Destino" %>
-          <%= f.text_field :address2, class: 'form-control', placeholder: "Ej: Diego de Almagro 1992", required: true %>
-        </div>
-        <div class="form-group">
-          <%= f.label :region2_id, "Región Destino" %>
-          <%= f.collection_select :region2_id, @regions, :id, :name, {prompt: "Selecciona una Región de Destino"}, class: 'form-control', required: true %>
-        </div>
-        <div class="form-group" id="communes2">
-          <%= f.label :commune2_id, "Comuna Destino" %>
-          <%= f.grouped_collection_select :commune2_id, Region.order(:name), :communes, :name, :id, :name, {}, class: 'form-control' %>
-        </div>
 
 
 
@@ -169,7 +178,7 @@
           });
           $("#new-publication").click(function(event) {
             event.stopPropagation();
-            validateForm()
+            validateForm();
           });
         }
        $(document).on('page:load', validateForm());

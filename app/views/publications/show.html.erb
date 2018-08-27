@@ -17,13 +17,13 @@
               <%= image_tag 'ubication.png', class: 'img-ico-show' %>
               <%= @publication.region.name unless @publication.region_id.nil? %>
             </div>
-            <div class="col-md-1 show-information">
-              <i class="fa fa-eye text-primary" aria-hidden="true"></i>
-              <span><%= @publication.page_views %></span>
-            </div>
             <div class="col-md-3 show-information">
               <i class="fa fa-usd text-success" aria-hidden="true"></i>
               <strong><%= @publication.price unless @publication.price.nil? %></strong>
+            </div>
+            <div class="col-md-5 show-information">
+              <%= image_tag 'ubication.png', class: 'img-ico-show' %>
+              <%= @publication.region.name unless @publication.region2_id.nil? %>
             </div>
             <div class="col-md-3 show-information">
               <%= link_to edit_publication_path(@publication), class: 'btn btn-primary btn-sm link-left' do %>
@@ -44,6 +44,7 @@
               <i class="fa fa-eye text-primary" aria-hidden="true"></i>
               <span><%= @publication.page_views %></span>
             </div>
+
             <div class="col-md-4 show-information">
               <i class="fa fa-usd text-success" aria-hidden="true"></i>
               <strong><%= @publication.price unless @publication.price.nil? %></strong>
@@ -76,10 +77,10 @@
                       </div>
                     <% end %>
                   <% end %>
-                  <% if @publication.category.name == "Arrendar" %>
-                    <%= image_tag 'Arrienda-img.png', class: 'img-notice' %>
+                  <% if @publication.category.name == "Subasta" %>
+                    <%= image_tag 'Subasta-img.png', class: 'img-notice' %>
                   <% else %>
-                    <%= image_tag 'Vende-img.png', class: 'img-notice-sale' %>
+                    <%= image_tag 'Envio-img.jpg', class: 'img-notice-sale' %>
                   <% end %>
                 </div>
                 <!-- Controls -->
@@ -123,49 +124,47 @@
           <div class="show-group">
             <p class="text-show-shipping">
               <%= image_tag 'address-ico.png', class: 'img-ico' %>
-              <strong>Dirección:</strong>
+              <strong>Dirección Origen:</strong>
               <%= @publication.address %>
+              <%= @publication.region %>
+              <%= @publication.commune %>
             </p>
           </div>
           <div class="show-group">
             <p class="text-show-shipping">
-              <%= image_tag 'house-ico.png', class: 'img-ico' %>
+              <%= image_tag 'address-ico.png', class: 'img-ico' %>
+              <strong>Dirección Destino:</strong>
+              <%= @publication.address2 %>
+              <%= @publication.region2 %>
+              <%= @publication.commune2 %>
+            </p>
+          </div>
+          <div class="show-group">
+            <p class="text-show-shipping">
+              <%= image_tag 'camion-de-reparto-ico.png', class: 'img-ico' %>
               <strong>Tipo de Envio:</strong>
               <%= @publication.type.name unless @publication.type_id.nil? %>
             </p>
           </div>
           <div class="show-group">
             <p class="text-show-shipping">
-              <%= image_tag 'width-ico.png', class: 'img-ico' %>
+              <%= image_tag 'measure-tape-ico.png', class: 'img-ico' %>
               <strong>Ancho:</strong>
               <%= @publication.width %>
             </p>
           </div>
           <div class="show-group">
             <p class="text-show-shipping">
-              <%= image_tag 'length-ico.png', class: 'img-ico' %>
+              <%= image_tag 'measure-tape-ico.png', class: 'img-ico' %>
               <strong>Largo:</strong>
               <%= @publication.length %>
             </p>
           </div>
           <div class="show-group">
             <p class="text-show-shipping">
-              <%= image_tag 'height-ico.png', class: 'img-ico' %>
+              <%= image_tag 'measure-tape-ico.png', class: 'img-ico' %>
               <strong>Alto:</strong>
               <%= @publication.height %>
-            </p>
-          </div>
-          <div class="show-group">
-            <p class="text-show-shipping">
-              <%= image_tag 'equipment-ico.png', class: 'img-ico' %>
-              <strong>Equipamiento:</strong>
-              <td>
-                <ul>
-                  <% @publication.equipments.each do |eq|%>
-                  <li class="text-show-shipping"><%= eq.name %></li>
-                  <% end %>
-                </ul>
-              </td>
             </p>
           </div>
         </div>

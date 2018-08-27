@@ -4,8 +4,6 @@ class Publication < ApplicationRecord
   belongs_to :user
   belongs_to :commune, optional: true
   belongs_to :region, optional: true
-  belongs_to :commune2, optional: true
-  belongs_to :region2, optional: true
   belongs_to :category, optional: true
   belongs_to :type, optional: true
 
@@ -22,17 +20,17 @@ class Publication < ApplicationRecord
 
   # Validations
   validates :title, length: { maximum: 50 }
-  #validates :title, presence: {message_: "Título es requerido" }
-  #validates :description, presence: {message: "Descripción es requerida"}
-  #validates :address, presence: {message: "Dirección es requerida"}
+  validates :title, presence: {message_: "Título es requerido" }
+  validates :description, presence: {message: "Descripción es requerida"}
+  validates :address, presence: {message: "Dirección es requerida"}
 
   # Scopes
   scope :by_title, -> (search) { where("title ilike ? OR description ilike ?", "%#{search}%", "%#{search}%") }
   scope :by_type, -> (search) { where(type_id: search) }
   scope :by_region, -> (search) { where(region_id: search) }
   scope :by_commune, -> (search) { where(commune_id: search) }
-  scope :by_region2, -> (search) { where(region_id: search) }
-  scope :by_commune2, -> (search) { where(commune_id: search) }
+  scope :by_region2, -> (search) { where(region2_id: search) }
+  scope :by_commune2, -> (search) { where(commune2_id: search) }
   scope :by_width_min, -> (value_min) { where("width >= ?", value_min) }
   scope :by_width_max, -> (value_max) { where("width <= ?", value_max) }
   scope :by_length_min, -> (value_min) { where("length >= ?", value_min) }

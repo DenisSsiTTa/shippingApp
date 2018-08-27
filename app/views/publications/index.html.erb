@@ -19,12 +19,12 @@
              </div>
 
              <div class="form-group">
-               <%= label :region, "Región" %>
-               <%= select_tag :search_region, options_from_collection_for_select(@regions, :id, :name), prompt: "Selecciona una Región", class: 'form-control' %>
+               <%= label :region, "Región Origen" %>
+               <%= select_tag :search_region, options_from_collection_for_select(@regions, :id, :name), prompt: "Selecciona una Región Origen", class: 'form-control' %>
              </div>
              <div class="form-group">
-               <%= label :commune, "Comuna" %>
-               <%= select_tag :search_commune, options_from_collection_for_select(@communes, :id, :name), prompt: "Selecciona la Comuna", class: 'form-control' %>
+               <%= label :commune, "Comuna Origen" %>
+               <%= select_tag :search_commune, options_from_collection_for_select(@communes, :id, :name), prompt: "Selecciona la Comuna Origen", class: 'form-control' %>
              </div>
 
              <div class="form-group">

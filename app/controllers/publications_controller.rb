@@ -23,7 +23,10 @@ class PublicationsController < ApplicationController
     @publications = @publications.by_length_max(params[:length_max]) if params[:length_max].present?
     @publications = @publications.by_height_min(params[:height_min]) if params[:height_min].present?
     @publications = @publications.by_height_max(params[:height_max]) if params[:height_max].present?
-
+    @publications = @publications.by_latitude_min(params[:latitude_min]) if params[:latitude_min].present?
+    @publications = @publications.by_latitude_max(params[:latitude_max]) if params[:latitude_max].present?
+    @publications = @publications.by_longitude_min(params[:longitude_min]) if params[:longitude_min].present?
+    @publications = @publications.by_longitude_max(params[:longitude_max]) if params[:longitude_max].present?
   end
 
   # GET /publications/1
@@ -65,7 +68,6 @@ class PublicationsController < ApplicationController
   def create
     @publication = current_user.publications.new(publication_params)
 
-    #@publication.user = current_user if user_signed_in? -> Soluciona el error 'user must exist' al crear una nueva publicacion
     respond_to do |format|
       if @publication.save
         unless params[:publication_attachments].nil?

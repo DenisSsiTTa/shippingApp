@@ -28,16 +28,21 @@
 <text text-anchor="start" x="612" y="-474.3" font-family="Times,serif" font-size="14.00">length :integer</text>
 <text text-anchor="start" x="612" y="-459.3" font-family="Times,serif" font-size="14.00">height :integer</text>
 <text text-anchor="start" x="612" y="-444.3" font-family="Times,serif" font-size="14.00">description :text</text>
+<text text-anchor="start" x="612" y="-444.3" font-family="Times,serif" font-size="14.00">description :address</text>
+<text text-anchor="start" x="612" y="-444.3" font-family="Times,serif" font-size="14.00">description :address2</text>
 <text text-anchor="start" x="612" y="-429.3" font-family="Times,serif" font-size="14.00">price :integer</text>
 <text text-anchor="start" x="612" y="-414.3" font-family="Times,serif" font-size="14.00">created_at :timestamp without time zone</text>
 <text text-anchor="start" x="612" y="-399.3" font-family="Times,serif" font-size="14.00">updated_at :timestamp without time zone</text>
 <text text-anchor="start" x="612" y="-384.3" font-family="Times,serif" font-size="14.00">user_id :integer</text>
 <text text-anchor="start" x="612" y="-369.3" font-family="Times,serif" font-size="14.00">commune_id :integer</text>
+<text text-anchor="start" x="612" y="-369.3" font-family="Times,serif" font-size="14.00">commune2_id :integer</text>
 <text text-anchor="start" x="612" y="-354.3" font-family="Times,serif" font-size="14.00">category_id :integer</text>
 <text text-anchor="start" x="612" y="-339.3" font-family="Times,serif" font-size="14.00">type_id :integer</text>
 <text text-anchor="start" x="612" y="-324.3" font-family="Times,serif" font-size="14.00">region_id :integer</text>
+<text text-anchor="start" x="612" y="-324.3" font-family="Times,serif" font-size="14.00">region2_id :integer</text>
 <text text-anchor="start" x="612" y="-309.3" font-family="Times,serif" font-size="14.00">photo :character varying</text>
 <text text-anchor="start" x="612" y="-294.3" font-family="Times,serif" font-size="14.00">page_views :integer</text>
+
 </g>
 <!-- ShippingEquipment -->
 <g id="node3" class="node"><title>ShippingEquipment</title>
@@ -126,6 +131,7 @@
 <text text-anchor="start" x="315" y="-729.8" font-family="Times,serif" font-size="14.00">created_at :timestamp without time zone</text>
 <text text-anchor="start" x="315" y="-714.8" font-family="Times,serif" font-size="14.00">updated_at :timestamp without time zone</text>
 <text text-anchor="start" x="315" y="-699.8" font-family="Times,serif" font-size="14.00">region_id :integer</text>
+<text text-anchor="start" x="315" y="-699.8" font-family="Times,serif" font-size="14.00">region2_id :integer</text>
 <text text-anchor="start" x="315" y="-684.8" font-family="Times,serif" font-size="14.00">province :character varying</text>
 </g>
 <!-- Region&#45;&gt;Commune -->
